@@ -16,11 +16,20 @@ class StackDataStructure {
   push(item) {
     if (this.canPush()) {
       this.stackControl[this.size] = item;
-      
+      this.size += 1;
+    } else {
+      return `Stack Overflow`;
     }
-
-    return this.size > this.MAX_SIZE;
+    return this.stackControl;
   }
 
-  pop() {}
+  pop() {
+    if (this.isEmpty()) {
+      return `Stack Underflow`
+    }
+    const lastIdemIdx = this.size - 1;
+    const lastIdemArry = this.stackControl.splice(lastIdemIdx, 1);
+    this.size -= 1;
+    return lastIdemArry [0];
+  }
 }
